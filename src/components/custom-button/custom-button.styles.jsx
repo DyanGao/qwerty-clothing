@@ -10,7 +10,7 @@ const buttonStyles = css`
     color: black;
     border: 1px solid black;
   }
-`
+`;
 
 
 const invertedButtonStyles = css`
