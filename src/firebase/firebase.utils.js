@@ -2,6 +2,7 @@ import firebase from 'firebase/app';
 import 'firebase/firestore';
 import 'firebase/auth';
 
+
 const config = {
   apiKey: "AIzaSyAp8J9--QVvktPU8iI46H8YEwa0_mxKCgM",
   authDomain: "qwerty-clothing-db.firebaseapp.com",
@@ -69,6 +70,15 @@ export const convertCollectionsSnapshotToMap = (collections) => {
     return accumulator;
   }, {});
 };
+
+export const getCurrentUser = () => {
+  return new Promise((resolve, reject) => {
+    const unsubscribe = auth.onAuthStateChanged(userAuth => {
+      unsubscribe();
+      resolve(userAuth);
+    }, reject)
+  });
+}
 
 export const auth = firebase.auth();
 export const firestore = firebase.firestore();
